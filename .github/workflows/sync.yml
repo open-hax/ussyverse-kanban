@@ -3,12 +3,19 @@ name: Sync to Trello
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
+env:
+  KANBAN_CLI_VERSION: '412255f9b1bc6a3efcfe3116a69bc38447e9cf3f'
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Clone kanban CLI (pinned)
+        run: git clone --depth 1 https://github.com/open-hax/openhax.git /tmp/openhax && git -C /tmp/openhax checkout ${{ env.KANBAN_CLI_VERSION }}
       
       - uses: pnpm/action-setup@v4
         with:
@@ -17,10 +24,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'pnpm'
-      
-      - name: Clone kanban CLI
-        run: git clone --depth 1 https://github.com/open-hax/openhax.git /tmp/openhax
       
       - name: Install CLI dependencies
         run: cd /tmp/openhax && pnpm install --filter @openhax/kanban
