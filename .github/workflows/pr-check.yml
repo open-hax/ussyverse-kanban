@@ -1,0 +1,38 @@
+name: Kanban Dry Run
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      
+      - name: Clone kanban CLI
+        run: git clone --depth 1 https://github.com/open-hax/openhax.git /tmp/openhax
+      
+      - name: Install CLI dependencies
+        run: cd /tmp/openhax && pnpm install --filter @openhax/kanban
+      
+      - name: Build CLI
+        run: cd /tmp/openhax && pnpm --filter @openhax/kanban build
+      
+      - name: Dry-run sync
+        run: |
+          node /tmp/openhax/packages/kanban/dist/cli.js sync trello \
+            --config ussyverse.kanban.json \
+            --dry-run
+        env:
+          TRELLO_API_KEY: ${{ secrets.TRELLO_API_KEY }}
+          TRELLO_API_TOKEN: ${{ secrets.TRELLO_API_TOKEN }}
