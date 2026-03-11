@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 env:
-  KANBAN_CLI_VERSION: '412255f9b1bc6a3efcfe3116a69bc38447e9cf3f'
+  KANBAN_CLI_VERSION: '3ca349759ece976e754d68d3d2ff2fd1a09eacb1'
 
 jobs:
   kanban-dry-run:
@@ -28,7 +28,7 @@ jobs:
           node-version: '22'
       
       - name: Install CLI dependencies
-        run: cd /tmp/openhax && pnpm install --filter @openhax/kanban
+        run: cd /tmp/openhax && pnpm install --filter @openhax/kanban --no-frozen-lockfile
       
       - name: Build CLI
         run: cd /tmp/openhax && pnpm --filter @openhax/kanban build
