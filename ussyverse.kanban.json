@@ -1,0 +1,7 @@
+{
+  "tasksDir": "./tasks",
+  "trello": {
+    "boardUrl": "https://trello.com/b/Mu2BmeDE/ussyverse",
+    "archiveMissing": false
+  }
+}
