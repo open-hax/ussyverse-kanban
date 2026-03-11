@@ -1,7 +1,7 @@
 ---
 uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
 title: Set up GitHub Actions workflows and branch protection for kanban repo
-status: in_progress
+status: done
 priority: P1
 labels:
   - infrastructure
