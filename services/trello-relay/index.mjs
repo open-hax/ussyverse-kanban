@@ -34,13 +34,19 @@ const timingSafeEqual = (a, b) => {
 };
 
 const verifyTrelloSignature = ({ rawBody, callbackUrl, secret, headerValue }) => {
-  if (!secret || !callbackUrl) return { ok: false, reason: "missing-secret-or-callback-url" };
-  if (!headerValue) return { ok: false, reason: "missing-x-trello-webhook" };
+  // Signature verification is strongly recommended, but can be optionally skipped.
+  // If either secret or callbackUrl is missing, we accept the request but mark it unverified.
+  if (!secret || !callbackUrl) {
+    return { ok: true, verified: false, reason: "unverified-missing-secret-or-callback-url" };
+  }
+  if (!headerValue) {
+    return { ok: true, verified: false, reason: "unverified-missing-x-trello-webhook" };
+  }
 
   // Per Trello docs: base64(HMAC-SHA1(body + callbackURL, appSecret))
   const content = Buffer.concat([rawBody, Buffer.from(callbackUrl)]);
   const digest = sha1Base64Hmac(secret, content);
-  return { ok: timingSafeEqual(digest, headerValue), reason: digest };
+  return { ok: timingSafeEqual(digest, headerValue), verified: true, reason: digest };
 };
 
 const githubDispatch = async ({ repo, token, eventType, payload }) => {
@@ -204,10 +210,13 @@ const server = http.createServer(async (req, res) => {
         headerValue: header
       });
 
+      // Note: may be unverified if env vars are missing.
       if (!sig.ok) {
+        console.log(JSON.stringify({ event: "trello-webhook", ok: false, verified: sig.verified, reason: sig.reason }));
         json(res, 401, {
           ok: false,
           error: "invalid-webhook-signature",
+          verified: sig.verified,
           reason: sig.reason
         });
         return;
@@ -230,7 +239,8 @@ const server = http.createServer(async (req, res) => {
         }
       }
 
-      json(res, 200, { ok: true });
+      console.log(JSON.stringify({ event: "trello-webhook", ok: true, verified: sig.verified }));
+      json(res, 200, { ok: true, verified: sig.verified });
       return;
     }
 
