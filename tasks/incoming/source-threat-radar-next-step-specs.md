@@ -9,7 +9,10 @@ labels:
 created_at: 2026-03-14T16:33:31Z
 ---
 
-Path: `threat-radar-next-step/specs/`
+Path: `sources/threat-radar-next-step/specs/`
+
+Origin: `threat-radar-next-step/specs/`
+Imported-at: `2026-03-14T18:22:56Z`
 
 Goal: track this spec/agile/kanban source as an upstream planning/work artifact location, managed via the unified Ussyverse board.
 

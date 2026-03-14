@@ -11,7 +11,10 @@ labels:
 created_at: 2026-03-14T16:33:31Z
 ---
 
-Path: `orgs/octave-commons/promethean/cli/kanban/spec/`
+Path: `sources/orgs/octave-commons/promethean/cli/kanban/spec/`
+
+Origin: `orgs/octave-commons/promethean/cli/kanban/spec/`
+Imported-at: `2026-03-14T18:22:56Z`
 
 Goal: track this spec/agile/kanban source as an upstream planning/work artifact location, managed via the unified Ussyverse board.
 

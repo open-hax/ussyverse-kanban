@@ -10,7 +10,10 @@ labels:
 created_at: 2026-03-14T16:33:31Z
 ---
 
-Path: `services/kronos/spec/`
+Path: `sources/services/kronos/spec/`
+
+Origin: `services/kronos/spec/`
+Imported-at: `2026-03-14T18:22:56Z`
 
 Goal: track this spec/agile/kanban source as an upstream planning/work artifact location, managed via the unified Ussyverse board.
 

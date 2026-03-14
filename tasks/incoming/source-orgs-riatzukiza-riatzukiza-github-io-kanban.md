@@ -11,7 +11,10 @@ labels:
 created_at: 2026-03-14T16:33:31Z
 ---
 
-Path: `orgs/riatzukiza/riatzukiza.github.io/kanban/`
+Path: `sources/orgs/riatzukiza/riatzukiza.github.io/kanban/`
+
+Origin: `orgs/riatzukiza/riatzukiza.github.io/kanban/`
+Imported-at: `2026-03-14T18:22:56Z`
 
 Goal: track this spec/agile/kanban source as an upstream planning/work artifact location, managed via the unified Ussyverse board.
 
