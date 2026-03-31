@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 env:
-  KANBAN_CLI_VERSION: '3ca349759ece976e754d68d3d2ff2fd1a09eacb1'
+  KANBAN_CLI_VERSION: '3ca349759ece976e754d68d3d2ff2fd1a09eacb1' # pragma: allowlist secret
 
 jobs:
   kanban-dry-run:
@@ -16,7 +16,7 @@ jobs:
       
       - name: Clone kanban CLI (pinned)
         run: |
-          git clone --depth 1 --branch feature/kanban-package https://github.com/open-hax/openhax.git /tmp/openhax
+          git clone --branch feature/kanban-package https://github.com/open-hax/openhax.git /tmp/openhax
           git -C /tmp/openhax checkout ${{ env.KANBAN_CLI_VERSION }}
       
       - uses: pnpm/action-setup@v4
