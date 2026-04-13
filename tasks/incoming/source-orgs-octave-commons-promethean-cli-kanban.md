@@ -1,16 +1,16 @@
 ---
-uuid: 5da8afff-daf5-427c-b429-4755a980a7bd
-title: Register source: orgs/octave-commons/shibboleth/specs/
+uuid: e2b9d2ae-05d8-4fbd-b7ca-d8dcc7d8be5d
+title: Register source: orgs/octave-commons/promethean/cli/kanban/
 status: incoming
 priority: P3
 labels:
-  - specs
+  - kanban
   - source
   - submodule
 created_at: 2026-03-14T16:33:31Z
 ---
 
-Path: `orgs/octave-commons/shibboleth/specs/`
+Path: `orgs/octave-commons/promethean/cli/kanban/`
 
 Goal: track this spec/agile/kanban source as an upstream planning/work artifact location, managed via the unified Ussyverse board.
 
