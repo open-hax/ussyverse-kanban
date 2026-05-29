@@ -46,6 +46,14 @@ Task description and notes here.
 pnpm --filter @openhax/kanban sync --config ussyverse.kanban.json --dry-run
 ```
 
+## Webring workflow (ussyco.de)
+
+See `docs/webring.md`.
+
+Create a new webring-site task via:
+- template: `templates/webring-site.task.md` (copy into `tasks/incoming/`)
+- generator: `node scripts/new-webring-site-task.mjs --name ... --subdomain ...`
+
 ## Status Transitions
 
 See docs/reference/process.md for the FSM workflow.
